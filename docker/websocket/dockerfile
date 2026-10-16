@@ -1,0 +1,32 @@
+FROM php:8.2-cli
+
+# Install dependency sistem + library yang dibutuhkan ekstensi PHP
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    unzip \
+    libzip-dev \
+    libxml2-dev \
+    libicu-dev \
+    libpng-dev \
+    libonig-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install zip xml dom simplexml intl gd mbstring pdo_mysql mysqli
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www/html
+
+# Copy source code
+COPY . .
+
+# Install dependency PHP
+RUN composer install --no-dev --optimize-autoloader --no-interaction
+
+EXPOSE 8081
+EXPOSE 8090
+
+CMD ["php", "websocket.php"]
