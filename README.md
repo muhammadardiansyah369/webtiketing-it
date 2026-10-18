@@ -79,7 +79,7 @@ Matikan MySQL XAMPP jika sedang berjalan, karena memakai port 3306.
 
 ```bash
 # 1. Ambil kode
-git clone https://github.com/USERNAME/NAMA-REPO.git
+git clone https://github.com/muhammadardiansyah369/webtiketing-it
 cd NAMA-REPO
 
 # 2. Siapkan konfigurasi
