@@ -1,0 +1,17 @@
+# Mengabaikan folder Git dan file kredensial
+.git
+.gitignore
+.env
+
+# Mengabaikan folder dependensi (Docker akan menginstalnya sendiri via composer di dalam container)
+/vendor/
+
+# Mengabaikan file log dan cache lokal
+/writable/cache/
+/writable/logs/
+/writable/session/
+
+# Mengabaikan folder testing dan dokumentasi
+/tests/
+/builds/
+README.md
